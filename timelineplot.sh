@@ -4,7 +4,7 @@
 #
 # Usage:
 #
-#   timeplot.sh <datafile> <plotout> [options]
+#   timelineplot.sh <datafile> <plotout> [options]
 #
 #     <datafile>
 #
@@ -71,6 +71,14 @@
 #     -ylabel <string>
 #
 #        Label for y-axis. Default value is "".
+#
+#     -xmin <time_expression>
+#     -xmax <time_expression>
+#
+#        Minimum and maximum values to use for x-axis. Useful if a constant
+#        scale is needed. Default is for the plot to fit the data values.
+#        The time expression must be in the same format as the time values
+#        in the input data.
 #
 #     -ymin <number>
 #     -ymax <number>
@@ -149,6 +157,10 @@ while (( $# )); do
           ;;
       -ylabel) ylabel="$2"; shift 2
           ;;
+      -xmin) xmin="$2"; shift 2
+          ;;
+      -xmax) xmax="$2"; shift 2
+          ;;
       -ymin) ymin="$2"; shift 2
           ;;
       -ymax) ymax="$2"; shift 2
@@ -187,6 +199,8 @@ done
 : ${linetitle:=""}
 : ${xlabel:=""}
 : ${ylabel:=""}
+: ${xmin:=""}
+: ${xmax:=""}
 : ${ymin:=""}
 : ${ymax:=""}
 : ${xrot:=60}
@@ -198,6 +212,10 @@ done
 : ${font:="arial"}
 : ${fontsize:=12}
 : ${fontcolor:="#000000"}
+
+# Add quotes around xmin and xmax if they're non-empty; need to remain unquoted if empty
+[[ ${#xmin} -gt 0 ]] && xmin="\"${xmin}\""
+[[ ${#xmax} -gt 0 ]] && xmax="\"${xmax}\""
 
 xtics_align="right"
 [[ ${xrot} -eq 0 ]] && xtics_align="center"
@@ -218,6 +236,7 @@ set ylabel "${ylabel}" tc "${fontcolor}"
 set xlabel "${xlabel}" tc "${fontcolor}"
 set xdata time
 set timefmt "${timefmt}" 
+set xrange [${xmin}:${xmax}]
 set format x "${xtimefmt}"
 set xtics ${xtics_align} rotate by ${xrot} font "${font},${fontsize}" tc "${fontcolor}"
 set ytics tc "${fontcolor}"
