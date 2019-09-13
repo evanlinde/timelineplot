@@ -97,6 +97,14 @@
 #
 #        Set the color of the plot background. Default is "#FFFFFF".
 #
+#     -grid <"" | "xtics" | "ytics" | "noxtics noytics">
+#
+#        Set the background grid. Default is "".
+#        "" - show full grid
+#        "xtics" - only show gridlines parallel to x-axis
+#        "ytics" - only show gridlines parallel to y-axis
+#        "noxtics noytics" - no background grid
+#
 #     -gridcolor <color_expression>
 #
 #        Set the color of background grid lines. Default is "#B0B0B0".
@@ -131,7 +139,7 @@ while (( $# )); do
           ;;
       -w) width="$2"; shift 2
           ;;
-      -format) outfmt="$2"; shift 2
+      -format) format="$2"; shift 2
           ;;
       -title) title="$2"; shift 2
           ;;
@@ -152,6 +160,8 @@ while (( $# )); do
       -lw) linewidth="$2"; shift 2
           ;;
       -bgcolor) bgcolor="$2"; shift 2
+          ;;
+      -grid) grid="$2"; shift 2
           ;;
       -gridcolor) gridcolor="$2"; shift 2
           ;;
@@ -183,6 +193,7 @@ done
 : ${linecolor:="#0000FF"}
 : ${linewidth:=2}
 : ${bgcolor:="#FFFFFF"}
+: ${grid:=""}
 : ${gridcolor:="#B0B0B0"}
 : ${font:="arial"}
 : ${fontsize:=12}
@@ -212,7 +223,7 @@ set xtics ${xtics_align} rotate by ${xrot} font "${font},${fontsize}" tc "${font
 set ytics tc "${fontcolor}"
 set border lc "${fontcolor}"
 set key left top tc "${fontcolor}"
-set grid lc "${gridcolor}"
+set grid ${grid} lc "${gridcolor}" # don't quote ${grid} since gnuplot won't like the empty quotes
 plot "${datafile}" using 1:2 with lines lw ${linewidth} lt 1 lc rgbcolor "${linecolor}" title "${linetitle}"
 EOF
 
