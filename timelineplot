@@ -137,54 +137,30 @@ plotout="$2"
 shift 2
 while (( $# )); do
     case $1 in
-      -sep) sep="$2"; shift 2
-          ;;
-      -tfmt) timefmt="$2"; shift 2
-          ;;
-      -xfmt) xtimefmt="$2"; shift 2
-          ;;
-      -h) height="$2"; shift 2
-          ;;
-      -w) width="$2"; shift 2
-          ;;
-      -format) format="$2"; shift 2
-          ;;
-      -title) title="$2"; shift 2
-          ;;
-      -linetitle) linetitle="$2"; shift 2
-          ;;
-      -xlabel) xlabel="$2"; shift 2
-          ;;
-      -ylabel) ylabel="$2"; shift 2
-          ;;
-      -xmin) xmin="$2"; shift 2
-          ;;
-      -xmax) xmax="$2"; shift 2
-          ;;
-      -ymin) ymin="$2"; shift 2
-          ;;
-      -ymax) ymax="$2"; shift 2
-          ;;
-      -xrot) xrot="$2"; shift 2
-          ;;
-      -lc) linecolor="$2"; shift 2
-          ;;
-      -lw) linewidth="$2"; shift 2
-          ;;
-      -bgcolor) bgcolor="$2"; shift 2
-          ;;
-      -grid) grid="$2"; shift 2
-          ;;
-      -gridcolor) gridcolor="$2"; shift 2
-          ;;
-      -font) font="$2"; shift 2
-          ;;
-      -fontsize) fontsize="$2"; shift 2
-          ;;
-      -fontcolor) fontcolor="$2"; shift 2
-          ;;
-      *) echo "Unexpected parameter: $1" 1>&2; ((err++)); shift
-          ;;
+      -sep)        sep="$2"; shift 2;;
+      -tfmt)       timefmt="$2"; shift 2;;
+      -xfmt)       xtimefmt="$2"; shift 2;;
+      -h)          height="$2"; shift 2;;
+      -w)          width="$2"; shift 2;;
+      -format)     format="$2"; shift 2;;
+      -title)      title="$2"; shift 2;;
+      -linetitle)  linetitle="$2"; shift 2;;
+      -xlabel)     xlabel="$2"; shift 2;;
+      -ylabel)     ylabel="$2"; shift 2;;
+      -xmin)       xmin="$2"; shift 2;;
+      -xmax)       xmax="$2"; shift 2;;
+      -ymin)       ymin="$2"; shift 2;;
+      -ymax)       ymax="$2"; shift 2;;
+      -xrot)       xrot="$2"; shift 2;;
+      -lc)         linecolor="$2"; shift 2;;
+      -lw)         linewidth="$2"; shift 2;;
+      -bgcolor)    bgcolor="$2"; shift 2;;
+      -grid)       grid="$2"; shift 2;;
+      -gridcolor)  gridcolor="$2"; shift 2;;
+      -font)       font="$2"; shift 2;;
+      -fontsize)   fontsize="$2"; shift 2;;
+      -fontcolor)  fontcolor="$2"; shift 2;;
+      *) echo "Unexpected parameter: $1" 1>&2; ((err++)); shift;;
     esac
 done
 
