@@ -2,29 +2,29 @@ TIMELINEPLOT(1)                                                TIMELINEPLOT(1)
 
 
 
-NNAAMMEE
+NAME
        timelineplot - generate simple line plots with time on the x-axis
 
 
 
-SSYYNNOOPPSSIISS
-       ttiimmeelliinneepplloott {_d_a_t_a_f_i_l_e|-} _i_m_a_g_e_f_i_l_e [_o_p_t_i_o_n]...
+SYNOPSIS
+       timelineplot {datafile|-} imagefile [option]...
 
 
 
-DDEESSCCRRIIPPTTIIOONN
+DESCRIPTION
        Generate  simple  line  plots  from  two columns of character-delimited
        data. The first column represents the time variable  (x-axis)  and  the
        second column contains the values to be plotted.
 
-       TTiimmeelliinneepplloott  is  a  wrapper  for ggnnuupplloott with many options in the plot
+       Timelineplot  is  a  wrapper  for gnuplot with many options in the plot
        script adjustable by optional command line arguments.
 
 
 
 
-RREEQQUUIIRREEDD AARRGGUUMMEENNTTSS
-       _d_a_t_a_f_i_l_e
+REQUIRED ARGUMENTS
+       datafile
 
               Two-column text file with time series data to  be  plotted.  The
               default  column  separator is the pipe character, "|". The first
@@ -35,88 +35,88 @@ RREEQQUUIIRREEDD AARRGGUUMMEENNTTSS
               Command line options may be used to specify an alternative  col‐
               umn separator or time format string.
 
-              When _d_a_t_a_f_i_l_e is "-", read data from standard input instead of a
+              When datafile is "-", read data from standard input instead of a
               file.
 
 
-       _i_m_a_g_e_f_i_l_e
+       imagefile
 
               File to use for the plot output image. This file will  be  over‐
               written if it already exists.
 
-              The output image will be created in ppnngg format by default.
+              The output image will be created in png format by default.
 
 
 
 
-OOPPTTIIOONNSS
-   IInnppuutt mmooddiiffiieerrss
-       --sseepp _c_h_a_r_a_c_t_e_r
+OPTIONS
+   Input modifiers
+       -sep character
 
               Column  separator for the input data file. Default is "|".  (The
               separator character should be enclosed in double quotes.)
 
 
-       --ttffmmtt _f_o_r_m_a_t___s_t_r_i_n_g
+       -tfmt format_string
 
               Format string describing the time format in the first column  of
               the input file. Default value is "%Y-%m-%d %H:%M:%S".
 
 
 
-   OOuuttppuutt mmooddiiffiieerrss
-       --xxffmmtt _f_o_r_m_a_t___s_t_r_i_n_g
+   Output modifiers
+       -xfmt format_string
 
               Format  string  to  use  for  x-axis  labels in the output plot.
               Default value is "" (no labels).
 
 
 
-       --hh _p_i_x_e_l_s
+       -h pixels
 
               Height of output image in pixels. Default is 300.
 
 
 
-       --ww _p_i_x_e_l_s
+       -w pixels
 
               Width of output image in pixels. Default is 400.
 
 
 
-       --ffoorrmmaatt _f_o_r_m_a_t
+       -format format
 
               Image format for the plot image. Default is "png". Other choices
               include "svg", "jpeg", and "gif".
 
 
 
-       --ttiittllee _s_t_r_i_n_g
+       -title string
 
               Title to associate with the y-axis data. Default value is "".
 
 
 
-       --lliinneettiittllee _s_t_r_i_n_g
+       -linetitle string
 
               Title to associate with the plotted line in a key. (Not terribly
               useful since we're only plotting one line.) Default value is "".
 
 
 
-       --xxllaabbeell _s_t_r_i_n_g
+       -xlabel string
 
               Label for x-axis. Default value is "".
 
 
 
-       --yyllaabbeell _s_t_r_i_n_g
+       -ylabel string
 
               Label for y-axis. Default value is "".
 
 
 
-       --xxmmiinn _t_i_m_e___e_x_p_r_e_s_s_i_o_n, --xxmmaaxx _t_i_m_e___e_x_p_r_e_s_s_i_o_n
+       -xmin time_expression, -xmax time_expression
 
               Minimum and maximum values to use for x-axis. Useful if  a  con‐
               stant  scale  is needed. Default is for the plot to fit the data
@@ -125,7 +125,7 @@ OOPPTTIIOONNSS
 
 
 
-       --yymmiinn _n_u_m_b_e_r, --yymmaaxx _n_u_m_b_e_r
+       -ymin number, -ymax number
 
               Minimum  and  maximum values to use for y-axis. Useful if a con‐
               stant scale is needed. Default is for the plot to fit  the  data
@@ -133,14 +133,14 @@ OOPPTTIIOONNSS
 
 
 
-       --xxrroott _d_e_g_r_e_e_s
+       -xrot degrees
 
               Rotation  angle  for  the  timestamp  labels on the x-axis tics.
               Default is 60.
 
 
 
-       --llcc _c_o_l_o_r___e_x_p_r_e_s_s_i_o_n
+       -lc color_expression
 
               Set the color of the line.  Default  value  is  "#0000FF".   Any
               value that gnuplot will accept after "rgbcolor" can be used here
@@ -148,59 +148,59 @@ OOPPTTIIOONNSS
 
 
 
-       --llww _p_i_x_e_l_s
+       -lw pixels
 
               Set the line width in pixels. Default is 2.
 
 
 
-       --bbggccoolloorr _c_o_l_o_r___e_x_p_r_e_s_s_i_o_n
+       -bgcolor color_expression
 
               Set the color of the plot background. Default is "#FFFFFF".
 
 
 
-       --ggrriidd {xtics|ytics|"noxtics noytics"}
+       -grid {xtics|ytics|"noxtics noytics"}
 
               Set the background grid. Default is to show the full grid.
-              xxttiiccss - only show gridlines parallel to x-axis
-              yyttiiccss - only show gridlines parallel to y-axis
-              ""nnooxxttiiccss nnooyyttiiccss"" - no background grid
+              xtics - only show gridlines parallel to x-axis
+              ytics - only show gridlines parallel to y-axis
+              "noxtics noytics" - no background grid
 
 
 
-       --ggrriiddccoolloorr _c_o_l_o_r___e_x_p_r_e_s_s_i_o_n
+       -gridcolor color_expression
 
               Set the color of background grid lines. Default is "#B0B0B0".
 
 
 
-       --ffoonntt _f_o_n_t_n_a_m_e
+       -font fontname
 
               Specify the font. Default is "arial".
 
 
 
-       --ffoonnttssiizzee _n_u_m_b_e_r
+       -fontsize number
 
               Specify the font size. Default is 12.
 
 
 
-       --ffoonnttccoolloorr _c_o_l_o_r___e_x_p_r_e_s_s_i_o_n
+       -fontcolor color_expression
 
               Set the color of the fonts and borders. Default is "#000000".
 
 
 
 
-AAUUTTHHOORR
+AUTHOR
        Written by Evan Linde (elinde@okstate.edu)
 
 
 
 
-SSEEEE AALLSSOO
+SEE ALSO
        gnuplot(1)
 
        More time format strings appear to work than are indicated by gnuplot's

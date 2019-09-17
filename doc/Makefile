@@ -21,7 +21,7 @@ $(manpage) : $(exe).1
 	gzip -c $^ > $@
 
 manual.txt : $(exe).1
-	groff -mandoc -T utf8 $^ > $@
+	groff -mandoc -T utf8 $^ | col -bx > $@
 
 uninstall :
 	rm -f $(man1)/$(manpage)
