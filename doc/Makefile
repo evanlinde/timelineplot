@@ -5,10 +5,10 @@ man1 := $(man)/man1
 exe := timelineplot
 manpage := $(exe).1.gz
 
-all : $(manpage)
+all : $(manpage) manual.txt
 
 clean : 
-	rm -f *.gz
+	rm -f *.gz manual.txt
 
 install : $(manpage)
 	install -m 644 $^ $(man1)/
@@ -19,6 +19,9 @@ install-local : $(manpage)
 
 $(manpage) : $(exe).1
 	gzip -c $^ > $@
+
+manual.txt : $(exe).1
+	groff -mandoc -T utf8 $^ > $@
 
 uninstall :
 	rm -f $(man1)/$(manpage)
