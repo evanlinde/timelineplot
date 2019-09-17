@@ -14,7 +14,7 @@ Usage:
     -h <pixels>  --  Height of output image.
     -w <pixels>  --  Width of output image.
     -format <format>  --  Image format (e.g. "png", "svg", "jpeg", "gif").
-    -title <string>  --  Title string for plot.
+    -title <str>  --  Title string for plot.
     -linetitle <str>  --  Label for the line.
     -xlabel <str>  --  Label for the x-axis.
     -ylabel <str>  --  Label for y-axis.
