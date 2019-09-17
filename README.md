@@ -21,18 +21,32 @@ See the [manual](doc/manual.txt) for the full list of options.
 
 ### Examples
 
+A very basic example without any of the optional arguments:
+
 ```bash
 timelineplot jan1-2.txt 1.png
 ```
+(Also equivalent would be `timelineplot - 1.png < jan1-2.txt` and `cat jan1-2.txt | timelineplot - 1.png`.)
 
-![](examples/1.png)
+![example plot with only default options](examples/1.png)
 
+
+Use a time formatter for the x-axis tic labels and make it wider:
 
 ```bash
 timelineplot jan1-2.txt 2.png -xfmt "%l %p" -w 600
 ```
 
-![](examples/2.png)
+![example plot with a couple non-default options](examples/2.png)
+
+
+Use just about all the options at once:
+
+```bash
+timelineplot jan1-2.txt 3.png -h 432 -w 543 -xfmt "%l:%M %p" -title "Temperature" -linetitle "I'm a label!" -xlabel "Time" -ylabel "Fahrenheit" -ymin 70 -ymax 100 -xmin "2019-01-01 06:30:00" -xmax "2019-01-01 08:30:00" -xrot 20 -lc "red" -bgcolor "#ccff99" -grid ytics -font "courier" -fontsize 14 -fontcolor "#8800ff"
+```
+
+![example plot with many non-default options](examples/3.png)
 
 
 ## Dependencies
