@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Make a simple line plot from a two-column file of time series data.
 help() {
 cat << EOFHELP
@@ -69,7 +69,7 @@ while (( $# )); do
     esac
 done
 
-[[ ${err} -gt 0 ]] && { help; exit 1 }
+[[ ${err} -gt 0 ]] && { help; exit 1; }
 
 # Set any unset variables to default values 
 : ${sep:="|"}
@@ -131,3 +131,4 @@ EOF
 
 # Delete the temp file if we created one
 [[ -f "$T" ]] && rm -f "$T"
+
