@@ -21,7 +21,18 @@ See the [manual](doc/manual.txt) for the full list of options.
 
 ### Examples
 
-To do...
+```bash
+timelineplot jan1-2.txt 1.png
+```
+
+![](examples/1.png)
+
+
+```bash
+timelineplot jan1-2.txt 2.png -xfmt "%l %p" -w 600
+```
+
+![](examples/2.png)
 
 
 ## Dependencies
