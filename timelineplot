@@ -112,20 +112,20 @@ fi
 
 gnuplot << EOF > "${imagefile}"
 set datafile separator "${sep}"
-set terminal ${format} size ${width},${height} font "${font},${fontsize}" background "${bgcolor}"
-set title "${title}" tc "${fontcolor}"
+set terminal ${format} size ${width},${height} font "${font},${fontsize}" background rgbcolor "${bgcolor}"
+set title "${title}" tc rgbcolor "${fontcolor}"
 set yrange [${ymin}:${ymax}]
-set ylabel "${ylabel}" tc "${fontcolor}"
-set xlabel "${xlabel}" tc "${fontcolor}"
+set ylabel "${ylabel}" tc rgbcolor "${fontcolor}"
+set xlabel "${xlabel}" tc rgbcolor "${fontcolor}"
 set xdata time
 set timefmt "${timefmt}" 
 set xrange [${xmin}:${xmax}]
 set format x "${xtimefmt}"
-set xtics ${xtics_align} rotate by ${xrot} font "${font},${fontsize}" tc "${fontcolor}"
-set ytics tc "${fontcolor}"
-set border lc "${fontcolor}"
-set key left top tc "${fontcolor}"
-set grid ${grid} lc "${gridcolor}" # don't quote ${grid} since gnuplot won't like the empty quotes
+set xtics ${xtics_align} rotate by ${xrot} font "${font},${fontsize}" tc rgbcolor "${fontcolor}"
+set ytics tc rgbcolor "${fontcolor}"
+set border lc rgbcolor "${fontcolor}"
+set key left top tc rgbcolor "${fontcolor}"
+set grid ${grid} lc rgbcolor "${gridcolor}" # don't quote ${grid} since gnuplot won't like the empty quotes
 plot "${datafile}" using 1:2 with lines lw ${linewidth} lt 1 lc rgbcolor "${linecolor}" title "${linetitle}"
 EOF
 
